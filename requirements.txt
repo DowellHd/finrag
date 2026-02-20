@@ -1,0 +1,43 @@
+# FinRAG pinned dependencies
+# All versions pinned to avoid supply-chain surprises.
+# Run `pip-audit` (no -r flag) to check installed env for known CVEs.
+# Versions selected for Python 3.13 compatibility.
+
+# ── Configuration ──────────────────────────────────────────────────────────────
+pydantic==2.9.2                 # Data validation and settings management
+pydantic-settings==2.6.1        # BaseSettings with .env support
+
+# ── Logging ────────────────────────────────────────────────────────────────────
+structlog==24.4.0               # Structured JSON logging
+
+# ── Embeddings ─────────────────────────────────────────────────────────────────
+sentence-transformers==3.4.1    # BGE/SBERT wrapper; chosen for finance benchmark scores
+transformers==4.53.0            # Pinned explicitly: fixes CVE-2024-12720 et al. (fix in ≥4.53.0)
+torch==2.8.0                    # PyTorch backend; pinned to 2.8.0 (fixes CVE-2025-2953, CVE-2025-3730)
+numpy==2.2.2                    # Numerical ops for MMR cosine matrix
+
+# ── PDF Parsing ────────────────────────────────────────────────────────────────
+pymupdf==1.26.7                 # Primary PDF extractor (fitz); faster than pdfplumber
+pdfplumber==0.11.0              # Fallback PDF extractor for scanned / complex layouts
+pdfminer.six==20251230          # Transitive pdfplumber dep; pinned to fix CVE-2025-64512, CVE-2025-70559
+
+# ── Vector Database ────────────────────────────────────────────────────────────
+chromadb==0.5.23                # Local persistent vector store; abstract interface allows pgvector swap
+
+# ── LLM ────────────────────────────────────────────────────────────────────────
+openai==1.109.1                 # Async OpenAI client with retry support
+
+# ── Token Counting ─────────────────────────────────────────────────────────────
+tiktoken==0.8.0                 # OpenAI tokenizer for prompt budget management
+
+# ── API ────────────────────────────────────────────────────────────────────────
+fastapi==0.115.14               # Async REST framework
+starlette==0.49.1               # FastAPI's ASGI core; pinned to fix CVE-2025-54121, CVE-2025-62727
+uvicorn[standard]==0.34.3       # ASGI server for FastAPI
+slowapi==0.1.9                  # Rate limiting middleware for FastAPI
+limits==3.12.0                  # Storage backends for slowapi
+
+# ── Testing ────────────────────────────────────────────────────────────────────
+pytest==8.3.4                   # Test runner
+pytest-asyncio==0.24.0          # Async test support
+pip-audit==2.10.0               # CVE scanning — run as part of CI/test suite

@@ -1,0 +1,56 @@
+APPLE INC.
+FORM 10-K ANNUAL REPORT
+For the Fiscal Year Ended September 30, 2023
+
+ITEM 1A. RISK FACTORS
+
+The following risk factors may materially harm our business, operating results, and financial condition.
+
+Macroeconomic and Industry Risks
+
+Global and regional economic conditions could materially adversely affect the Company. The Company has international operations with sales outside the U.S. representing a majority of the Company's total net sales. In addition, there are fiscal and monetary policy risks related to the U.S. and other economies in which the Company operates, including inflation, interest rate increases, and recessionary conditions.
+
+The Company's success depends largely on its ability to attract and retain key personnel. The competition for key personnel in the areas where the Company operates is intense.
+
+ITEM 7. MANAGEMENT'S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS
+
+Fiscal Year 2023 Highlights
+
+The Company posted record revenue of $394.3 billion for fiscal 2023, a decrease of 2.8% compared to fiscal 2022. Despite the decline in revenue, net income was $97.0 billion, representing a net margin of 24.6%.
+
+Products net sales decreased 5% and Services net sales increased 9% year over year. Services reached an all-time quarterly revenue record of $85.2 billion for the fiscal year.
+
+iPhone revenue was $200.6 billion, representing approximately 51% of total net sales. Mac revenue was $29.4 billion. iPad revenue was $28.3 billion. Wearables, Home and Accessories revenue was $39.8 billion.
+
+Liquidity and Capital Resources
+
+The Company had $162.1 billion in cash, cash equivalents, and marketable securities as of September 30, 2023. The Company generated $113.9 billion in cash from operating activities during fiscal 2023. Capital expenditures were $10.7 billion.
+
+The Company returned over $90 billion to shareholders during fiscal 2023 through dividends and share repurchases.
+
+ITEM 8. FINANCIAL STATEMENTS
+
+Consolidated Statements of Operations (in millions, except per share amounts):
+
+                              2023          2022          2021
+Net sales:
+  Products                $298,085      $316,199      $297,392
+  Services                  85,200        78,129        68,425
+Total net sales            383,285       394,328       365,817
+
+Cost of sales:
+  Products                 189,282       201,471       192,266
+  Services                  24,855        22,075        20,715
+Total cost of sales        214,137       223,546       212,981
+
+Gross margin               169,148       170,782       152,836
+Operating expenses          54,847        51,345        43,887
+Operating income           114,301       119,437       108,949
+Other income/(expense)         (565)        (334)          258
+Income before provision     113,736       119,103       109,207
+Provision for income taxes   16,663        19,300        14,527
+Net income                 $97,073       $99,803       $94,680
+
+Earnings per share:
+  Basic                      $6.16         $6.15         $5.67
+  Diluted                    $6.13         $6.11         $5.61
