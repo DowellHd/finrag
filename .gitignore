@@ -84,3 +84,10 @@ uploads/
 # Distribution / packaging
 *.tar.gz
 *.zip
+
+# Images (screenshots, diagrams — not source assets)
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.svg
