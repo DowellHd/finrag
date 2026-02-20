@@ -1,0 +1,47 @@
+# FinRAG .dockerignore
+# Excludes heavy/sensitive directories from Docker build context
+
+# Secrets — NEVER in image
+.env
+.env.*
+
+# Vector DB data — mounted as volume at runtime
+chroma_db/
+
+# Model weights — large binaries, mounted as volume at runtime
+models/
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyc
+.pytest_cache/
+.coverage
+htmlcov/
+*.egg-info/
+dist/
+build/
+
+# Virtual environments
+.venv/
+venv/
+
+# Development tools
+.git/
+.gitignore
+.mypy_cache/
+.idea/
+.vscode/
+
+# Logs
+*.log
+logs/
+
+# Temp files
+tmp/
+temp/
+uploads/
+
+# Documentation (not needed in image)
+*.md
+!README.md

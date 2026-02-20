@@ -1,0 +1,29 @@
+services:
+  finrag:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile
+    image: finrag:latest
+    container_name: finrag-api
+    # Inject secrets at runtime — no secrets in this file
+    env_file:
+      - .env
+    ports:
+      - "8000:8000"
+    volumes:
+      # Persist ChromaDB and model cache outside the container
+      - ./chroma_db:/app/chroma_db
+      - ./models:/app/models
+      - ./data:/app/data:ro
+    restart: unless-stopped
+    # No privileged mode — minimal capabilities
+    security_opt:
+      - no-new-privileges:true
+    read_only: false  # ChromaDB needs to write to chroma_db/
+    healthcheck:
+      test: ["CMD", "python", "-c",
+             "import urllib.request; urllib.request.urlopen('http://localhost:8000/health')"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 20s
