@@ -36,16 +36,23 @@ COPY --chown=finrag:finrag . .
 RUN mkdir -p /app/chroma_db /app/models /app/data/sample \
     && chown -R finrag:finrag /app
 
+# Pre-download BGE model weights so the container starts fast at runtime
+RUN python -c "from sentence_transformers import SentenceTransformer; SentenceTransformer('BAAI/bge-small-en-v1.5', cache_folder='/app/models')"
+
+# Copy and mark the entrypoint script
+COPY --chown=finrag:finrag docker/entrypoint.sh /app/entrypoint.sh
+RUN chmod +x /app/entrypoint.sh
+
 # Switch to non-root user
 USER finrag
 
 # Expose API port
 EXPOSE 8000
 
-# Health check (matches /health endpoint — no internal details exposed)
-HEALTHCHECK --interval=30s --timeout=10s --start-period=15s --retries=3 \
+# Health check — generous start period to allow seeding + model load
+HEALTHCHECK --interval=30s --timeout=10s --start-period=120s --retries=5 \
     CMD python -c "import urllib.request; urllib.request.urlopen('http://localhost:8000/health')" \
     || exit 1
 
-# Default command: start the FastAPI server
-CMD ["uvicorn", "api.main:app", "--host", "0.0.0.0", "--port", "8000", "--workers", "1"]
+# Seed demo data then start the FastAPI server
+CMD ["/bin/bash", "/app/entrypoint.sh"]
