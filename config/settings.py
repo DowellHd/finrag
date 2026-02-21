@@ -83,7 +83,7 @@ class Settings(BaseSettings):
     api_host: str = Field(default="0.0.0.0")
     api_port: int = Field(default=8000, ge=1, le=65535)
     cors_origins: list[str] = Field(
-        default=["http://localhost:3000", "http://localhost:8080"]
+        default=["https://dowellstandley.com", "http://localhost:3000", "http://localhost:8080"]
     )
     rate_limit_ingest: int = Field(
         default=10,
