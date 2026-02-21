@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: finrag-api
+    runtime: docker
+    dockerfilePath: ./docker/Dockerfile
+    dockerContext: .
+    plan: free
+    envVars:
+      - key: OPENAI_API_KEY
+        sync: false
+      - key: CORS_ORIGINS
+        value: "https://dowellstandley.com,http://localhost:3000"
