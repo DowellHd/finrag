@@ -96,7 +96,7 @@ class ChromaVectorStore(AbstractVectorStore):
         result = self._collection.query(
             query_embeddings=[query_embedding],
             n_results=n,
-            include=["documents", "metadatas", "distances"],
+            include=["documents", "metadatas", "distances", "embeddings"],
         )
 
         chunks: list[StoredChunk] = []
@@ -104,8 +104,9 @@ class ChromaVectorStore(AbstractVectorStore):
         docs = result.get("documents", [[]])[0]
         metas = result.get("metadatas", [[]])[0]
         distances = result.get("distances", [[]])[0]
+        embeddings = result.get("embeddings", [[]])[0] or [None] * len(ids)
 
-        for chunk_id, text, meta, dist in zip(ids, docs, metas, distances):
+        for chunk_id, text, meta, dist, emb in zip(ids, docs, metas, distances, embeddings):
             # ChromaDB cosine distance = 1 − similarity → convert back
             score = float(1.0 - dist)
             chunks.append(
@@ -114,6 +115,7 @@ class ChromaVectorStore(AbstractVectorStore):
                     text=text or "",
                     score=score,
                     metadata=meta or {},
+                    embedding=list(emb) if emb is not None else None,
                 )
             )
 

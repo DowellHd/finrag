@@ -38,8 +38,8 @@ class Settings(BaseSettings):
 
     # ── Embedding ─────────────────────────────────────────────────────────────
     embedding_model: str = Field(
-        default="BAAI/bge-small-en-v1.5",
-        description="HuggingFace sentence-transformer model.",
+        default="text-embedding-3-small",
+        description="OpenAI embedding model ID.",
     )
     model_cache_dir: str = Field(
         default="./models",

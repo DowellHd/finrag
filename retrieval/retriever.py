@@ -177,12 +177,18 @@ class Retriever:
             log.info("retriever.no_candidates", query_len=len(query))
             return []
 
-        # Re-encode the candidate texts to get their embedding vectors for MMR
-        # (ChromaDB doesn't return stored embeddings by default — re-encode is cheap)
-        candidate_texts = [c.text for c in raw_candidates]
-        candidate_embeddings = self.embedder.encode_documents(
-            candidate_texts, show_progress=False
-        )  # (n, dim) float32
+        # Use stored embeddings returned by the vector store when available
+        # (avoids a second embedder call, which matters for API-based embedders).
+        # Fall back to re-encoding if any embedding is missing.
+        if all(c.embedding is not None for c in raw_candidates):
+            candidate_embeddings = np.array(
+                [c.embedding for c in raw_candidates], dtype=np.float32
+            )
+        else:
+            candidate_texts = [c.text for c in raw_candidates]
+            candidate_embeddings = self.embedder.encode_documents(
+                candidate_texts, show_progress=False
+            )  # (n, dim) float32
 
         reranked = mmr_rerank(
             query_embedding=query_embedding,

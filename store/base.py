@@ -24,6 +24,7 @@ class StoredChunk:
     text: str
     score: float  # cosine similarity (0–1)
     metadata: dict[str, Any]
+    embedding: list[float] | None = None  # stored vector, if returned by the backend
 
 
 class AbstractVectorStore(ABC):

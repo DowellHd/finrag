@@ -26,7 +26,7 @@ from config.settings import Settings
 from generation.llm import OpenAILLM, LLMResponse
 from generation.prompt_builder import build_prompt
 from ingestion.chunker import chunk_page_docs, Chunk
-from ingestion.embedder import BGEEmbedder
+from ingestion.embedder import BGEEmbedder, OpenAIEmbedder
 from ingestion.loader import load_document
 from retrieval.retriever import Retriever, RetrievedChunk
 from security.validators import validate_file_path, sanitize_query
@@ -309,9 +309,9 @@ def build_pipeline(settings: Settings | None = None) -> RAGPipeline:
         ),
     )
 
-    embedder = BGEEmbedder(
-        model_name=settings.embedding_model,
-        cache_dir=settings.model_cache_dir,
+    embedder = OpenAIEmbedder(
+        api_key=settings.openai_api_key,
+        model=settings.embedding_model,
     )
 
     llm = OpenAILLM(

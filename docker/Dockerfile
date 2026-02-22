@@ -36,9 +36,6 @@ COPY --chown=finrag:finrag . .
 RUN mkdir -p /app/chroma_db /app/models /app/data/sample \
     && chown -R finrag:finrag /app
 
-# Pre-download BGE model weights so the container starts fast at runtime
-RUN python -c "from sentence_transformers import SentenceTransformer; SentenceTransformer('BAAI/bge-small-en-v1.5', cache_folder='/app/models')"
-
 # Copy and mark the entrypoint script
 COPY --chown=finrag:finrag docker/entrypoint.sh /app/entrypoint.sh
 RUN chmod +x /app/entrypoint.sh
