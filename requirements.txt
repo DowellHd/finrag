@@ -19,7 +19,7 @@ numpy==2.2.2                    # Numerical ops for MMR cosine matrix
 # ── PDF Parsing ────────────────────────────────────────────────────────────────
 pymupdf==1.26.7                 # Primary PDF extractor (fitz); faster than pdfplumber
 pdfplumber==0.11.0              # Fallback PDF extractor for scanned / complex layouts
-pdfminer.six==20251230          # Transitive pdfplumber dep; pinned to fix CVE-2025-64512, CVE-2025-70559
+pdfminer.six==20231228          # Pinned to match pdfplumber==0.11.0 hard requirement
 
 # ── Vector Database ────────────────────────────────────────────────────────────
 chromadb==0.5.23                # Local persistent vector store; abstract interface allows pgvector swap
