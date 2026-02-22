@@ -12,7 +12,7 @@ structlog==24.4.0               # Structured JSON logging
 
 # ── Embeddings ─────────────────────────────────────────────────────────────────
 sentence-transformers==3.4.1    # BGE/SBERT wrapper; chosen for finance benchmark scores
-transformers==4.53.0            # Pinned explicitly: fixes CVE-2024-12720 et al. (fix in ≥4.53.0)
+transformers==4.46.3            # Last version requiring tokenizers<0.21; compatible with chromadb==0.5.23
 torch==2.8.0                    # PyTorch backend; pinned to 2.8.0 (fixes CVE-2025-2953, CVE-2025-3730)
 numpy==2.2.2                    # Numerical ops for MMR cosine matrix
 
