@@ -32,7 +32,7 @@ tiktoken==0.8.0                 # OpenAI tokenizer for prompt budget management
 
 # ── API ────────────────────────────────────────────────────────────────────────
 fastapi==0.115.14               # Async REST framework
-starlette==0.49.1               # FastAPI's ASGI core; pinned to fix CVE-2025-54121, CVE-2025-62727
+starlette==0.46.2               # Pinned to last version compatible with fastapi==0.115.14 (<0.47.0)
 uvicorn[standard]==0.34.3       # ASGI server for FastAPI
 slowapi==0.1.9                  # Rate limiting middleware for FastAPI
 limits==3.12.0                  # Storage backends for slowapi
