@@ -17,8 +17,6 @@ Part of FinRAG — a standalone finance-domain RAG system built as a companion
 to SSB (Smart Strategies Builder).
 """
 
-from __future__ import annotations
-
 import time
 import uuid
 from contextlib import asynccontextmanager
