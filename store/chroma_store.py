@@ -104,7 +104,8 @@ class ChromaVectorStore(AbstractVectorStore):
         docs = result.get("documents", [[]])[0]
         metas = result.get("metadatas", [[]])[0]
         distances = result.get("distances", [[]])[0]
-        embeddings = result.get("embeddings", [[]])[0] or [None] * len(ids)
+        raw_embeddings = result.get("embeddings", [None])[0]
+        embeddings = raw_embeddings if raw_embeddings is not None else [None] * len(ids)
 
         for chunk_id, text, meta, dist, emb in zip(ids, docs, metas, distances, embeddings):
             # ChromaDB cosine distance = 1 − similarity → convert back
