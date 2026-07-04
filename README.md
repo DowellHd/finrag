@@ -3,8 +3,8 @@
 ![Python](https://img.shields.io/badge/Python-3.11+-blue?logo=python)
 ![FastAPI](https://img.shields.io/badge/FastAPI-0.111-green?logo=fastapi)
 ![ChromaDB](https://img.shields.io/badge/ChromaDB-0.4.24-orange)
-![sentence-transformers](https://img.shields.io/badge/BGE-small--en--v1.5-purple)
 ![OpenAI](https://img.shields.io/badge/OpenAI-GPT--4o--mini-412991?logo=openai)
+![OpenAI Embeddings](https://img.shields.io/badge/Embeddings-text--embedding--3--small-412991?logo=openai)
 ![License](https://img.shields.io/badge/License-MIT-yellow)
 
 > **A standalone, production-quality RAG system built as a companion project to [SSB (Smart Strategies Builder)](https://smartstrategiesbuilder.ai).**
@@ -15,7 +15,7 @@ SSB handles market data, stock analysis, and ML-driven insights. FinRAG explores
 
 ## Overview
 
-FinRAG ingests financial documents (PDFs, TXT, Markdown), chunks and embeds them using BGE embeddings, stores vectors in ChromaDB, and answers questions via retrieval-augmented generation with GPT-4o-mini. The system is designed with production concerns in mind: security-first input validation, rate limiting, structured logging, and a clean abstract interface that enables swapping ChromaDB for pgvector without touching business logic.
+FinRAG ingests financial documents (PDFs, TXT, Markdown), chunks and embeds them using OpenAI's `text-embedding-3-small`, stores vectors in ChromaDB, and answers questions via retrieval-augmented generation with GPT-4o-mini. The system is designed with production concerns in mind: security-first input validation, rate limiting, structured logging, and a clean abstract interface that enables swapping ChromaDB for pgvector without touching business logic.
 
 **What it handles:**
 - SEC 10-K and 10-Q annual/quarterly filings
@@ -39,12 +39,12 @@ flowchart TD
     B -->|Ingest| C[security/validators.py\nPath traversal · Extension whitelist · Size limit]
     C --> D[ingestion/loader.py\nPyMuPDF primary · pdfplumber fallback]
     D --> E[ingestion/chunker.py\nRecursive split · Table preservation · Section headers]
-    E --> F[ingestion/embedder.py\nBGE bge-small-en-v1.5 · Batch encode · L2 normalise]
+    E --> F[ingestion/embedder.py\nOpenAI text-embedding-3-small · Batched API call · L2 normalise]
     F --> G[SHA256 deduplication]
     G --> H[(ChromaDB\nPersistent vector store)]
 
     B -->|Query| I[security/validators.py\nInjection detection · Length limit]
-    I --> J[ingestion/embedder.py\nEncode query with BGE prefix]
+    I --> J[ingestion/embedder.py\nEncode query via OpenAI embeddings API]
     J --> K[store/chroma_store.py\nTop-k cosine retrieval]
     K --> L[retrieval/retriever.py\nMMR reranking — scratch implementation]
     L --> M[generation/prompt_builder.py\nFinance persona · Document trust boundary · Token budget]
@@ -174,8 +174,8 @@ Ask a financial question grounded in ingested documents.
 
 ## Design Decisions
 
-### Why BGE over MiniLM?
-`BAAI/bge-small-en-v1.5` outperforms `all-MiniLM-L6-v2` on BEIR financial retrieval benchmarks. BGE also supports a query prefix (`Represent this sentence for searching relevant passages:`) that further improves asymmetric search quality. The performance difference is meaningful on domain-specific financial terminology.
+### Why OpenAI embeddings over local BGE?
+FinRAG originally used `BAAI/bge-small-en-v1.5` via sentence-transformers, chosen for strong BEIR financial retrieval benchmark scores. It was later replaced with OpenAI's `text-embedding-3-small` to eliminate the torch/transformers/sentence-transformers dependency chain (~350MB of RAM overhead) and the local model download step — a meaningful win for memory-constrained deployment (e.g. Render's free tier). The `OpenAIEmbedder` batches all chunks into a single API call per ingest, and the retriever reuses embeddings already stored in ChromaDB during MMR reranking instead of re-encoding, so the switch didn't add extra query-time latency.
 
 ### Why ChromaDB?
 Local-first persistent storage with no infrastructure overhead for development. The `AbstractVectorStore` interface means switching to pgvector (for production PostgreSQL deployments) requires only a new adapter class — no changes to retrieval or pipeline code.
@@ -205,7 +205,7 @@ Test coverage:
 - `test_validators.py` — path traversal, extension whitelist, size limits, 10 injection patterns
 - `test_chunker.py` — overlap math, sentence boundary preservation, table detection
 - `test_retriever.py` — MMR diversity vs naive top-k, cosine properties, edge cases
-- `test_pipeline.py` — end-to-end ingest → query → source citation (real BGE, fake LLM)
+- `test_pipeline.py` — end-to-end ingest → query → source citation (real local BGE embedder for cost-free testing, fake LLM; production path uses `OpenAIEmbedder`)
 
 ---
 
@@ -242,7 +242,7 @@ finrag/
 ├── ingestion/
 │   ├── loader.py                # PyMuPDF + pdfplumber fallback; filename metadata parsing
 │   ├── chunker.py               # Recursive splitter; finance-aware; table preservation
-│   └── embedder.py              # BGE wrapper; batch encode; L2 normalise; device auto-detect
+│   └── embedder.py              # OpenAI text-embedding-3-small wrapper; batched API calls; L2 normalise
 ├── store/
 │   ├── base.py                  # AbstractVectorStore interface
 │   └── chroma_store.py          # ChromaDB implementation
