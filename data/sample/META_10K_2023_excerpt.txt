@@ -1,0 +1,41 @@
+META PLATFORMS, INC.
+FORM 10-K ANNUAL REPORT
+For the Fiscal Year Ended December 31, 2023
+
+ITEM 1A. RISK FACTORS
+
+The following risk factors may materially harm our business, operating results, and financial condition.
+
+Advertising Revenue Concentration
+
+We generate substantially all of our revenue from advertising. Our advertising revenue could be adversely affected by changes in user engagement, platform policy changes at other companies (e.g. mobile operating systems), macroeconomic conditions, and evolving privacy regulation limiting ad targeting.
+
+Reality Labs and Long-Term Investment Risk
+
+We continue to invest heavily in Reality Labs, including augmented and virtual reality hardware and the metaverse. These investments have resulted in significant operating losses and may not generate a return, or may take many years to do so.
+
+ITEM 7. MANAGEMENT'S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS
+
+Fiscal Year 2023 Highlights
+
+Revenue increased 16% to $134.9 billion, compared with $116.6 billion in 2022, driven by growth in ad impressions and the impact of AI investments on ad performance. Family of Apps revenue was approximately $133.2 billion with operating income of $62.9 billion. Reality Labs revenue was $1.9 billion with an operating loss of $16.1 billion. Net income was $39.1 billion, more than double the $23.2 billion reported in 2022.
+
+Daily active people (DAP) across our Family of Apps averaged 3.19 billion in December 2023, up 8% year over year.
+
+Liquidity and Capital Resources
+
+Cash, cash equivalents, and marketable securities were $65.4 billion as of December 31, 2023. Cash flow from operations was $71.1 billion. The company repurchased $19.7 billion of Class A common stock and initiated its first-ever quarterly dividend in early 2024.
+
+ITEM 8. FINANCIAL STATEMENTS
+
+Consolidated Statements of Income (in millions, except per share amounts):
+
+                              2023          2022          2021
+Revenue                     $134,902      $116,609      $117,929
+Costs and expenses            88,151       96,988        87,665
+Income from operations         46,751       19,621        30,264
+Net income                   $39,098       $23,200       $39,370
+
+Earnings per share:
+  Basic                        $15.24        $8.63         $13.99
+  Diluted                       $14.87        $8.59         $13.77

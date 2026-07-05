@@ -1,0 +1,41 @@
+NETFLIX, INC.
+FORM 10-K ANNUAL REPORT
+For the Fiscal Year Ended December 31, 2023
+
+ITEM 1A. RISK FACTORS
+
+The following risk factors may materially harm our business, operating results, and financial condition.
+
+Competition for Entertainment Time
+
+We compete broadly for the leisure time of consumers against other streaming services, linear television, gaming, and social media. Increased competition could make it harder to acquire and retain paid memberships.
+
+Content Costs and Production Risk
+
+Our business depends on the continued investment in and successful execution of a broad slate of content. Production delays, including from industry-wide labor disruptions, and rising content costs could adversely affect our margins and member satisfaction.
+
+ITEM 7. MANAGEMENT'S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS
+
+Fiscal Year 2023 Highlights
+
+Revenue grew 7% to $33.7 billion, compared with $31.6 billion in 2022. Global streaming paid memberships reached over 260 million by year end, with a record 29.6 million paid net additions during the year, aided by the continued rollout of paid sharing and the ad-supported plan. Operating margin expanded to 21%, up from 18% in 2022. Net income was $5.4 billion, up 20% year over year.
+
+The ad-supported plan grew to more than 23 million monthly active users by the end of the fiscal year, and free cash flow reached a record $6.9 billion for the year.
+
+Liquidity and Capital Resources
+
+Cash and cash equivalents were $7.1 billion as of December 31, 2023. Free cash flow was $6.9 billion, up substantially from $1.6 billion in 2022. The company continued to reduce debt outstanding and did not repurchase shares during most of the fiscal year.
+
+ITEM 8. FINANCIAL STATEMENTS
+
+Consolidated Statements of Operations (in millions, except per share amounts):
+
+                              2023          2022          2021
+Revenue                     $33,723       $31,616       $29,698
+Cost of revenue               17,332       17,332        17,330
+Operating income                7,051        5,633         6,194
+Net income                    $5,407        $4,492        $5,116
+
+Earnings per share:
+  Basic                         $12.27        $10.02        $11.55
+  Diluted                        $12.03        $9.95         $11.24

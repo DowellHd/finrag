@@ -34,6 +34,8 @@ SAMPLE_FILES = {
     "AMZN": "AMZN_10K_2023_excerpt.txt",
     "GOOGL": "GOOGL_10K_2023_excerpt.txt",
     "NVDA": "NVDA_10K_2023_excerpt.txt",
+    "META": "META_10K_2023_excerpt.txt",
+    "NFLX": "NFLX_10K_2023_excerpt.txt",
     "JPM": "JPM_10K_2023_excerpt.txt",
     "XOM": "XOM_10K_2023_excerpt.txt",
     "JNJ": "JNJ_10K_2023_excerpt.txt",

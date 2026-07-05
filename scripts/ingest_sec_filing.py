@@ -37,6 +37,8 @@ COMPANIES: dict[str, int] = {
     "AMZN": 1018724,
     "GOOGL": 1652044,
     "NVDA": 1045810,
+    "META": 1326801,
+    "NFLX": 1065280,
     "JPM": 19617,
     "XOM": 34088,
     "JNJ": 200406,
