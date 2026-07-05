@@ -173,6 +173,17 @@ class QueryRequest(BaseModel):
         le=20,
         description="Number of document chunks to retrieve.",
     )
+    ticker: str | None = Field(
+        default=None,
+        max_length=10,
+        pattern=r"^[A-Z0-9\.\-]{1,10}$",
+        description="Restrict retrieval to a single company (e.g. AAPL). Omit to search all indexed companies.",
+    )
+
+    @field_validator("ticker", mode="before")
+    @classmethod
+    def _upper_ticker(cls, v):
+        return v.upper() if isinstance(v, str) else v
 
 
 class SourceRefOut(BaseModel):
@@ -224,6 +235,10 @@ class EphemeralQueryResponse(BaseModel):
 class HealthResponse(BaseModel):
     status: str
     doc_count: int
+
+
+class CompaniesResponse(BaseModel):
+    tickers: list[str]
 
 
 # ── Error handling helpers ────────────────────────────────────────────────────
@@ -329,7 +344,7 @@ async def query(
     rid = _request_id()
 
     try:
-        result = await pipeline.query(body.question)
+        result = await pipeline.query(body.question, ticker=body.ticker)
     except SuspiciousQueryError as exc:
         _log_and_raise(
             exc,
@@ -609,3 +624,24 @@ async def health(
         doc_count = -1
 
     return HealthResponse(status="ok", doc_count=doc_count)
+
+
+@app.get(
+    "/companies",
+    response_model=CompaniesResponse,
+    summary="List tickers currently indexed",
+)
+async def companies(
+    pipeline: RAGPipeline = Depends(get_pipeline),
+) -> CompaniesResponse:
+    """Return the distinct tickers currently in the vector store.
+
+    Used by client UIs (e.g. a company picker) to discover which companies
+    can be queried without hardcoding the list.
+    """
+    try:
+        tickers = pipeline.store.list_tickers()
+    except Exception:  # noqa: BLE001
+        tickers = []
+
+    return CompaniesResponse(tickers=tickers)

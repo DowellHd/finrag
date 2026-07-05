@@ -153,7 +153,7 @@ class Retriever:
         self.mmr_lambda = mmr_lambda
         self.fetch_multiplier = fetch_multiplier
 
-    def retrieve(self, query: str) -> list[RetrievedChunk]:
+    def retrieve(self, query: str, ticker: str | None = None) -> list[RetrievedChunk]:
         """Retrieve the most relevant, diverse chunks for a query.
 
         Pipeline:
@@ -164,6 +164,7 @@ class Retriever:
 
         Args:
             query: Sanitised user question.
+            ticker: Optional ticker to restrict retrieval to a single company.
 
         Returns:
             List of ``RetrievedChunk`` objects ordered by MMR score.
@@ -171,7 +172,8 @@ class Retriever:
         query_embedding = self.embedder.encode_query(query)  # (dim,) float32
 
         fetch_k = self.top_k * self.fetch_multiplier
-        raw_candidates = self.store.query(query_embedding.tolist(), top_k=fetch_k)
+        where = {"ticker": ticker} if ticker else None
+        raw_candidates = self.store.query(query_embedding.tolist(), top_k=fetch_k, where=where)
 
         if not raw_candidates:
             log.info("retriever.no_candidates", query_len=len(query))

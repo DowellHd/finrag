@@ -56,12 +56,15 @@ class AbstractVectorStore(ABC):
         self,
         query_embedding: list[float],
         top_k: int = 5,
+        where: dict[str, Any] | None = None,
     ) -> list[StoredChunk]:
         """Return the top-k most similar chunks.
 
         Args:
             query_embedding: L2-normalised query vector.
             top_k: Number of results to return.
+            where: Optional metadata equality filter (e.g. ``{"ticker": "AAPL"}``)
+                   to restrict the search to a subset of stored chunks.
 
         Returns:
             List of ``StoredChunk`` objects, ordered by descending similarity.
@@ -82,3 +85,7 @@ class AbstractVectorStore(ABC):
     @abstractmethod
     def exists(self, chunk_id: str) -> bool:
         """Return True if a chunk with the given ID already exists."""
+
+    @abstractmethod
+    def list_tickers(self) -> list[str]:
+        """Return the distinct, sorted ticker values currently in the store."""

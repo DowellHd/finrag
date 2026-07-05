@@ -90,12 +90,14 @@ class ChromaVectorStore(AbstractVectorStore):
         self,
         query_embedding: list[float],
         top_k: int = 5,
+        where: dict[str, Any] | None = None,
     ) -> list[StoredChunk]:
-        """Return top-k chunks by cosine similarity."""
+        """Return top-k chunks by cosine similarity, optionally filtered by metadata."""
         n = min(top_k, max(self._collection.count(), 1))
         result = self._collection.query(
             query_embeddings=[query_embedding],
             n_results=n,
+            where=where or None,
             include=["documents", "metadatas", "distances", "embeddings"],
         )
 
@@ -137,3 +139,13 @@ class ChromaVectorStore(AbstractVectorStore):
         """Return True if chunk_id is already in the collection."""
         result = self._collection.get(ids=[chunk_id], include=[])
         return bool(result.get("ids"))
+
+    def list_tickers(self) -> list[str]:
+        """Return the distinct, sorted ticker values currently in the collection."""
+        result = self._collection.get(include=["metadatas"])
+        tickers = {
+            meta["ticker"]
+            for meta in result.get("metadatas") or []
+            if meta and meta.get("ticker")
+        }
+        return sorted(tickers)

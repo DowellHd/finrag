@@ -212,7 +212,7 @@ class RAGPipeline:
 
     # ── Query ──────────────────────────────────────────────────────────────────
 
-    async def query(self, question: str) -> QueryResult:
+    async def query(self, question: str, ticker: str | None = None) -> QueryResult:
         """Answer a financial question from the document store.
 
         Pipeline:
@@ -224,6 +224,7 @@ class RAGPipeline:
 
         Args:
             question: Raw user question string.
+            ticker: Optional ticker to restrict retrieval to a single company.
 
         Returns:
             ``QueryResult`` with answer, sources, and latency.
@@ -235,7 +236,7 @@ class RAGPipeline:
         clean_query = sanitize_query(question)
 
         # 2 — Retrieve
-        retrieved: list[RetrievedChunk] = self.retriever.retrieve(clean_query)
+        retrieved: list[RetrievedChunk] = self.retriever.retrieve(clean_query, ticker=ticker)
 
         # 3 — Build prompt
         system_prompt, user_message = build_prompt(clean_query, retrieved)
