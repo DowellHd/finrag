@@ -1,0 +1,41 @@
+WALMART INC.
+FORM 10-K ANNUAL REPORT
+For the Fiscal Year Ended January 31, 2023
+
+ITEM 1A. RISK FACTORS
+
+The following risk factors may materially harm our business, operating results, and financial condition.
+
+Margin Pressure and Inflation
+
+Our business is sensitive to changes in economic conditions, including inflation, which can affect consumer spending patterns and increase our costs for merchandise, transportation, and labor faster than we are able to pass those costs on to customers.
+
+E-commerce and Omnichannel Execution
+
+We continue to invest heavily in e-commerce, supply chain automation, and last-mile delivery capabilities. Failure to execute this strategy effectively relative to competitors could harm market share and margins.
+
+ITEM 7. MANAGEMENT'S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS
+
+Fiscal Year 2023 Highlights
+
+Total revenue was $611.3 billion, up 6.7% versus the prior fiscal year, driven by strength in Walmart U.S. and Sam's Club, as well as continued growth in global e-commerce, which grew 17%. Net income attributable to Walmart was $11.68 billion, compared with $13.67 billion in the prior fiscal year, reflecting a legal settlement charge related to opioid litigation.
+
+Walmart U.S. comparable sales grew 6.6% for the fiscal year, and membership income at Sam's Club grew 7.7%.
+
+Liquidity and Capital Resources
+
+Cash and cash equivalents were $9.9 billion as of January 31, 2023. Cash flow from operations was $28.8 billion. The company paid $6.1 billion in dividends and repurchased $9.9 billion of shares during the fiscal year.
+
+ITEM 8. FINANCIAL STATEMENTS
+
+Consolidated Statements of Income (in millions, except per share amounts):
+
+                            FY2023        FY2022        FY2021
+Total revenue             $611,289      $572,754      $555,233
+Cost of sales               463,721       429,000       420,315
+Operating income              20,428        25,942        22,548
+Consolidated net income      $11,680       $13,673       $13,510
+
+Earnings per share:
+  Basic                        $4.34         $4.90         $4.87
+  Diluted                       $4.28         $4.87         $4.75

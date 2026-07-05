@@ -1,0 +1,41 @@
+AMAZON.COM, INC.
+FORM 10-K ANNUAL REPORT
+For the Fiscal Year Ended December 31, 2023
+
+ITEM 1A. RISK FACTORS
+
+The following risk factors may materially harm our business, operating results, and financial condition.
+
+Intense Competition and Thin Margins
+
+We face intense competition across all of our businesses, including retail, third-party marketplaces, and cloud computing. Our businesses operate at low profit margins, and we make significant investments in new products and services that may not prove successful.
+
+Inventory and Fulfillment Risks
+
+We are exposed to risks associated with inventory management, fulfillment network capacity, and reliance on third-party sellers and delivery service partners. Disruptions to our fulfillment or transportation networks could harm our reputation and profitability.
+
+ITEM 7. MANAGEMENT'S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS
+
+Fiscal Year 2023 Highlights
+
+Net sales increased 12% to $574.8 billion, compared with $514.0 billion in 2022. North America segment sales were $352.8 billion, International segment sales were $131.2 billion, and AWS segment sales were $90.8 billion, up 13%. Net income was $30.4 billion, compared with a net loss of $2.7 billion in 2022.
+
+Operating income increased to $36.9 billion, compared with $12.2 billion in 2022, driven by cost efficiencies across the fulfillment network and continued AWS growth.
+
+Liquidity and Capital Resources
+
+Cash, cash equivalents, and marketable securities were $73.4 billion as of December 31, 2023. Cash provided by operating activities increased to $84.9 billion. Capital expenditures were $48.1 billion, reflecting continued investment in fulfillment and technology infrastructure, including AWS data centers.
+
+ITEM 8. FINANCIAL STATEMENTS
+
+Consolidated Statements of Operations (in millions, except per share amounts):
+
+                              2023          2022          2021
+Net sales                  $574,785      $513,983      $469,822
+Operating expenses          537,933       501,735       444,943
+Operating income              36,852        12,248        24,879
+Net income/(loss)            $30,425       $(2,722)      $33,364
+
+Earnings per share:
+  Basic                        $2.95        $(0.27)        $3.30
+  Diluted                       $2.90        $(0.27)        $3.24

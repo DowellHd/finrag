@@ -1,0 +1,43 @@
+MICROSOFT CORPORATION
+FORM 10-K ANNUAL REPORT
+For the Fiscal Year Ended June 30, 2023
+
+ITEM 1A. RISK FACTORS
+
+The following risk factors may materially harm our business, operating results, and financial condition.
+
+Competition and Technology Risks
+
+The markets for our products and services are highly competitive, characterized by rapid technological change, and marked by evolving customer needs and frequent product introductions and improvements. Our competitors range from large, well-established companies to emerging startups. Our success is highly dependent on our ability to attract and retain talented employees, particularly in artificial intelligence and cloud computing, where competition for skilled personnel is intense.
+
+Cybersecurity and Data Risks
+
+Cyberattacks and security vulnerabilities could lead to reduced revenue, increased costs, liability claims, or harm to our reputation or competitive position. As a leading provider of cloud-based services, we are a frequent target of such attacks.
+
+ITEM 7. MANAGEMENT'S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS
+
+Fiscal Year 2023 Highlights
+
+Revenue increased 7% to $211.9 billion, driven by growth across our cloud offerings, including Microsoft Cloud revenue of $111.6 billion, up 22%. Net income was $72.4 billion, and diluted earnings per share was $9.68.
+
+Segment revenue: Productivity and Business Processes revenue was $69.3 billion. Intelligent Cloud revenue was $87.9 billion, driven by Azure and other cloud services growth of 27%. More Personal Computing revenue was $54.7 billion.
+
+Liquidity and Capital Resources
+
+Cash, cash equivalents, and short-term investments were $111.3 billion as of June 30, 2023. Cash flow from operations was $87.6 billion. We returned $9.7 billion to shareholders in the form of share repurchases and dividends in the fourth quarter alone.
+
+ITEM 8. FINANCIAL STATEMENTS
+
+Consolidated Statements of Income (in millions, except per share amounts):
+
+                              2023          2022          2021
+Revenue                    $211,915      $198,270      $168,088
+Cost of revenue              65,863        62,650        52,232
+Gross margin                 146,052       135,620       115,856
+Operating expenses           74,732        68,556        57,511
+Operating income              88,523        83,383        69,916
+Net income                   $72,361       $72,738       $61,271
+
+Earnings per share:
+  Basic                        $9.72         $9.70         $8.12
+  Diluted                      $9.68         $9.65         $8.05

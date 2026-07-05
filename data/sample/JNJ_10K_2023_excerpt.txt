@@ -1,0 +1,42 @@
+JOHNSON & JOHNSON
+FORM 10-K ANNUAL REPORT
+For the Fiscal Year Ended December 31, 2023
+
+ITEM 1A. RISK FACTORS
+
+The following risk factors may materially harm our business, operating results, and financial condition.
+
+Product Liability and Litigation
+
+We are involved in numerous product liability lawsuits, including litigation related to talc-based products, that could result in substantial settlements, judgments, or reputational harm regardless of the merits of the claims.
+
+Patent Expirations and Competition
+
+Our pharmaceutical business faces the loss of patent protection and exclusivity for several key products, which could result in generic or biosimilar competition and reduced revenue.
+
+ITEM 7. MANAGEMENT'S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS
+
+Fiscal Year 2023 Highlights
+
+Worldwide sales from continuing operations (following the November 2023 Kenvue consumer health spin-off) were $85.2 billion, up 6.5% versus the prior year. Innovative Medicine sales were $54.6 billion, and MedTech sales were $30.5 billion. Net earnings attributable to Johnson & Johnson were $35.2 billion, which included a significant one-time non-cash gain related to the Kenvue separation.
+
+Oncology and immunology continued to be the largest growth drivers within Innovative Medicine, while MedTech benefited from continued recovery in surgical procedure volumes.
+
+Liquidity and Capital Resources
+
+Cash and cash equivalents were $24.9 billion as of December 31, 2023. Cash flow from operations was $19.8 billion. The company paid $11.8 billion in dividends and remains committed to its long-standing annual dividend increase.
+
+ITEM 8. FINANCIAL STATEMENTS
+
+Consolidated Statements of Income (in millions, except per share amounts):
+
+                              2023          2022          2021
+Sales to customers          $85,159       $79,620       $76,502 (a)
+Cost of products sold         28,504        27,262        26,517
+Net earnings attributable to J&J $35,153   $17,941       $20,878
+
+Earnings per share:
+  Basic                        $13.68         $6.83         $7.93
+  Diluted                       $13.40         $6.73         $7.81
+
+(a) Prior-year figures reflect continuing operations following the Kenvue spin-off.

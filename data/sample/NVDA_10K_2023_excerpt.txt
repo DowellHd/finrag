@@ -1,0 +1,41 @@
+NVIDIA CORPORATION
+FORM 10-K ANNUAL REPORT
+For the Fiscal Year Ended January 29, 2023
+
+ITEM 1A. RISK FACTORS
+
+The following risk factors may materially harm our business, operating results, and financial condition.
+
+Demand and Supply Chain Volatility
+
+Our results of operations have fluctuated in the past and may fluctuate significantly in the future due to changes in demand for our products, particularly in gaming and data center markets, and our reliance on third-party foundries and manufacturing partners for wafer supply.
+
+Customer Concentration in Data Center
+
+A significant portion of our data center revenue is concentrated among a small number of large cloud service providers. The loss of, or reduced purchasing by, any of these customers could harm our operating results.
+
+ITEM 7. MANAGEMENT'S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS
+
+Fiscal Year 2023 Highlights
+
+Revenue was $26.97 billion, roughly flat compared with fiscal 2022, as growth in Data Center revenue of 41% was offset by a decline in Gaming revenue due to macroeconomic conditions and channel inventory corrections. Data Center revenue reached a record $15.0 billion for the fiscal year. Net income was $4.37 billion, down from $9.75 billion in fiscal 2022, reflecting inventory charges and lower Gaming demand.
+
+Liquidity and Capital Resources
+
+Cash, cash equivalents, and marketable securities were $13.3 billion as of the end of fiscal 2023. Cash provided by operating activities was $5.6 billion. We returned $9.5 billion to shareholders through share repurchases and dividends during the fiscal year.
+
+ITEM 8. FINANCIAL STATEMENTS
+
+Consolidated Statements of Income (in millions, except per share amounts):
+
+                          FY2023        FY2022        FY2021
+Revenue                    $26,974       $26,914       $16,675
+Cost of revenue             16,621         9,439         6,279
+Gross profit                 10,353        17,475        10,396
+Operating expenses            7,166         5,268         4,150
+Operating income               3,187        12,207         6,246
+Net income                    $4,368        $9,752        $4,332
+
+Earnings per share:
+  Basic                         $1.76         $3.91         $1.74
+  Diluted                       $1.74         $3.85         $1.73

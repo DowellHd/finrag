@@ -92,15 +92,32 @@ pip install -r requirements.txt
 cp .env.example .env
 # Edit .env — add your OPENAI_API_KEY
 
-# 5. Ingest a sample 10-K excerpt (bundled)
+# 5. Ingest a sample 10-K excerpt (bundled) — AAPL, MSFT, AMZN, GOOGL, NVDA,
+#    JPM, XOM, JNJ, and WMT excerpts are all in data/sample/
 python -m finrag ingest data/sample/AAPL_10K_2023_excerpt.txt --ticker AAPL --doc-type 10-K
 
 # 6. Ask a question
 python -m finrag query "What were Apple's main risk factors in 2023?"
 
-# 7. (Optional) Download and ingest a full EDGAR filing
+# 7. (Optional) Download and ingest full EDGAR filings for all 9 companies
 python scripts/ingest_sec_filing.py
 ```
+
+### Sample corpus
+
+`data/sample/` bundles hand-curated FY2023 10-K excerpts for 9 companies spanning tech, banking, energy, healthcare, and retail — used for fast, offline demo seeding (`scripts/seed_demo.py`). `scripts/ingest_sec_filing.py` downloads the corresponding full, verbatim filings from SEC EDGAR for the same set.
+
+| Ticker | Company | Sector | Fiscal year covered |
+|---|---|---|---|
+| AAPL | Apple Inc. | Technology / Consumer Electronics | FY2023 (ended Sep 30, 2023) |
+| MSFT | Microsoft Corporation | Technology / Cloud | FY2023 (ended Jun 30, 2023) |
+| AMZN | Amazon.com, Inc. | E-commerce / Cloud | FY2023 (ended Dec 31, 2023) |
+| GOOGL | Alphabet Inc. | Technology / Internet & Advertising | FY2023 (ended Dec 31, 2023) |
+| NVDA | NVIDIA Corporation | Semiconductors | FY2023 (ended Jan 29, 2023) |
+| JPM | JPMorgan Chase & Co. | Banking / Financial Services | FY2023 (ended Dec 31, 2023) |
+| XOM | Exxon Mobil Corporation | Energy / Oil & Gas | FY2023 (ended Dec 31, 2023) |
+| JNJ | Johnson & Johnson | Healthcare / Pharmaceuticals | FY2023 (ended Dec 31, 2023) |
+| WMT | Walmart Inc. | Retail | FY2023 (ended Jan 31, 2023) |
 
 ### Start the API server
 
@@ -254,8 +271,9 @@ finrag/
 ├── api/main.py                  # FastAPI; rate limiting; strict Pydantic models
 ├── cli/run.py                   # python -m finrag ingest / query
 ├── tests/                       # pytest; real embeddings; no LLM API calls
-├── data/sample/                 # Public-domain EDGAR excerpt for demo
-├── scripts/ingest_sec_filing.py # Download + ingest EDGAR 10-K
+├── data/sample/                 # Public-domain EDGAR excerpts for demo (9 companies, diverse sectors)
+├── scripts/ingest_sec_filing.py # Download + ingest EDGAR 10-Ks for all sample companies
+├── scripts/seed_demo.py         # Container-startup seeding of the full sample corpus
 └── docker/Dockerfile            # Multi-stage; non-root user
 ```
 

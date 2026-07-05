@@ -1,0 +1,40 @@
+EXXON MOBIL CORPORATION
+FORM 10-K ANNUAL REPORT
+For the Fiscal Year Ended December 31, 2023
+
+ITEM 1A. RISK FACTORS
+
+The following risk factors may materially harm our business, operating results, and financial condition.
+
+Commodity Price Volatility
+
+Our results of operations and cash flows are heavily influenced by crude oil and natural gas prices, which are subject to significant volatility driven by global supply and demand, OPEC+ decisions, and geopolitical events.
+
+Energy Transition and Climate Regulation
+
+Government policies and regulations addressing climate change, including carbon pricing and emissions standards, could increase our operating costs and affect demand for our products over the long term.
+
+ITEM 7. MANAGEMENT'S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS
+
+Fiscal Year 2023 Highlights
+
+Total revenue and other income was $344.6 billion, compared with $413.7 billion in 2022, reflecting lower natural gas and crude prices compared with the prior year's highs. Net income was $36.0 billion, compared with a record $55.7 billion in 2022. Full-year production averaged 3.8 million oil-equivalent barrels per day, including the Pioneer Natural Resources merger completed in 2024.
+
+Upstream earnings were $22.5 billion, and Energy Products earnings were $9.9 billion, reflecting normalized refining margins compared with 2022's exceptional levels.
+
+Liquidity and Capital Resources
+
+Cash and cash equivalents were $31.5 billion as of December 31, 2023. Cash flow from operations was $55.4 billion. The company distributed $32.4 billion to shareholders through dividends and share repurchases during 2023.
+
+ITEM 8. FINANCIAL STATEMENTS
+
+Consolidated Statements of Income (in millions, except per share amounts):
+
+                              2023          2022          2021
+Total revenue and other income $344,582    $413,680      $285,640
+Total costs and other deductions 298,750    346,773       267,124
+Net income attributable to ExxonMobil $36,010  $55,740    $23,040
+
+Earnings per share:
+  Basic                          $9.09         $13.35        $5.42
+  Diluted                        $9.06         $13.26        $5.39

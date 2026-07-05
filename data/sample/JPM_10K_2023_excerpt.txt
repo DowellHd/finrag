@@ -1,0 +1,41 @@
+JPMORGAN CHASE & CO.
+FORM 10-K ANNUAL REPORT
+For the Fiscal Year Ended December 31, 2023
+
+ITEM 1A. RISK FACTORS
+
+The following risk factors may materially harm our business, operating results, and financial condition.
+
+Credit and Interest Rate Risk
+
+Our results are affected by changes in interest rates, credit spreads, and the credit quality of our loan portfolio. Rising interest rates and a weakening macroeconomic environment could increase charge-offs and required credit loss provisions.
+
+Regulatory and Capital Requirements
+
+We are subject to extensive regulation and capital requirements from the Federal Reserve and other regulators. Changes in these requirements, including the proposed Basel III endgame rules, could constrain our capital return activities.
+
+ITEM 7. MANAGEMENT'S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS
+
+Fiscal Year 2023 Highlights
+
+Total net revenue was $158.1 billion, up from $128.7 billion in 2022, reflecting higher net interest income and the acquisition of First Republic Bank. Net income was a record $49.6 billion, up from $37.7 billion in 2022. Return on tangible common equity was 21%.
+
+Net interest income increased to $89.3 billion, benefiting from higher rates. The provision for credit losses was $9.3 billion, reflecting reserve builds and net charge-offs.
+
+Liquidity and Capital Resources
+
+The Common Equity Tier 1 (CET1) capital ratio was 15.0% as of December 31, 2023. The firm maintained a CET1 capital position well above regulatory minimums, and returned $23.3 billion to shareholders through dividends and net share repurchases.
+
+ITEM 8. FINANCIAL STATEMENTS
+
+Consolidated Statements of Income (in millions, except per share amounts):
+
+                              2023          2022          2021
+Total net revenue          $158,104      $128,695      $121,649
+Provision for credit losses    9,320         6,725        (9,256)
+Total noninterest expense     84,010        74,529        71,343
+Net income                  $49,552       $37,676       $48,334
+
+Earnings per share:
+  Basic                        $16.29        $12.13        $15.39
+  Diluted                      $16.23        $12.09        $15.36

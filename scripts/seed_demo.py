@@ -1,5 +1,6 @@
 """
-Seed the demo vector store with Apple's FY2023 10-K excerpt.
+Seed the demo vector store with FY2023 10-K excerpts across a diverse set of
+companies (tech, banking, energy, healthcare, retail).
 
 Run once during container startup (via entrypoint.sh). Safe to call multiple
 times — checks doc_count first and skips if already seeded.
@@ -23,7 +24,21 @@ from pipeline.rag_pipeline import build_pipeline
 
 log = structlog.get_logger(__name__)
 
-SAMPLE_FILE = Path(__file__).resolve().parent.parent / "data" / "sample" / "AAPL_10K_2023_excerpt.txt"
+SAMPLE_DIR = Path(__file__).resolve().parent.parent / "data" / "sample"
+
+# Ticker -> sample excerpt filename. Covers tech, banking, energy, healthcare,
+# and retail so the demo corpus supports cross-sector queries.
+SAMPLE_FILES = {
+    "AAPL": "AAPL_10K_2023_excerpt.txt",
+    "MSFT": "MSFT_10K_2023_excerpt.txt",
+    "AMZN": "AMZN_10K_2023_excerpt.txt",
+    "GOOGL": "GOOGL_10K_2023_excerpt.txt",
+    "NVDA": "NVDA_10K_2023_excerpt.txt",
+    "JPM": "JPM_10K_2023_excerpt.txt",
+    "XOM": "XOM_10K_2023_excerpt.txt",
+    "JNJ": "JNJ_10K_2023_excerpt.txt",
+    "WMT": "WMT_10K_2023_excerpt.txt",
+}
 
 
 def main() -> None:
@@ -36,20 +51,29 @@ def main() -> None:
         print(f"[seed_demo] Already seeded ({doc_count} chunks). Skipping.")
         return
 
-    if not SAMPLE_FILE.exists():
-        log.error("seed_demo.file_not_found", path=str(SAMPLE_FILE))
-        print(f"[seed_demo] ERROR: Sample file not found: {SAMPLE_FILE}", file=sys.stderr)
-        sys.exit(1)
+    total_stored = 0
+    total_skipped = 0
+    total_chunks = 0
+    for ticker, filename in SAMPLE_FILES.items():
+        sample_file = SAMPLE_DIR / filename
+        if not sample_file.exists():
+            log.error("seed_demo.file_not_found", path=str(sample_file))
+            print(f"[seed_demo] ERROR: Sample file not found: {sample_file}", file=sys.stderr)
+            sys.exit(1)
 
-    print(f"[seed_demo] Ingesting {SAMPLE_FILE.name} ...")
-    result = pipeline.ingest(
-        str(SAMPLE_FILE),
-        ticker="AAPL",
-        doc_type="10-K",
-    )
+        print(f"[seed_demo] Ingesting {sample_file.name} ...")
+        result = pipeline.ingest(
+            str(sample_file),
+            ticker=ticker,
+            doc_type="10-K",
+        )
+        total_stored += result.chunks_stored
+        total_skipped += result.chunks_skipped
+        total_chunks += result.total_chunks
+
     print(
-        f"[seed_demo] Done — stored={result.chunks_stored}, "
-        f"skipped={result.chunks_skipped}, total={result.total_chunks}"
+        f"[seed_demo] Done — stored={total_stored}, "
+        f"skipped={total_skipped}, total={total_chunks}"
     )
 
 
