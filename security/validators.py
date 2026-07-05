@@ -150,6 +150,75 @@ def validate_file_path(
     return resolved
 
 
+# ── Upload Bytes Validation ───────────────────────────────────────────────────
+
+
+def validate_upload_bytes(
+    filename: str,
+    data: bytes,
+    *,
+    max_size_bytes: int,
+    allowed_extensions: frozenset[str] = ALLOWED_EXTENSIONS,
+) -> str:
+    """Validate raw uploaded bytes before any temp-file write.
+
+    Mirrors ``validate_file_path``'s checks but operates on in-memory bytes,
+    since an ephemeral upload has no filesystem path yet — ``validate_file_path``
+    cannot be reused as-is because it calls ``.is_file()``/``.stat()``.
+
+    Args:
+        filename: The client-supplied filename (untrusted).
+        data: Raw file bytes already read into memory by the caller.
+        max_size_bytes: Maximum allowed size in bytes.
+        allowed_extensions: Set of permitted extensions (default: .pdf, .txt, .md).
+
+    Returns:
+        Sanitized basename — safe to use in citations/logs/temp-file suffixes.
+        Never a full client-supplied path.
+
+    Raises:
+        ValidationError: If the file is empty or the filename is invalid.
+        FileTooLargeError: If ``data`` exceeds ``max_size_bytes``.
+        ExtensionNotAllowedError: If the extension is not whitelisted.
+    """
+    if not data:
+        raise ValidationError("Uploaded file is empty.")
+
+    if len(data) > max_size_bytes:
+        log.warning(
+            "security.upload_too_large",
+            size_bytes=len(data),
+            max_size_bytes=max_size_bytes,
+        )
+        raise FileTooLargeError(
+            f"Uploaded file size {len(data):,} bytes exceeds limit of {max_size_bytes:,} bytes."
+        )
+
+    # Strip any directory components the client tried to smuggle in —
+    # split on both Unix and Windows separators (Path(...).name alone isn't
+    # enough: on POSIX, backslashes aren't treated as path separators, so a
+    # Windows-style client filename would otherwise pass through unsplit).
+    # Defence in depth — we never open this path directly regardless.
+    candidate = re.split(r"[/\\]", filename or "upload")[-1]
+    safe_name = Path(candidate).name
+    if not safe_name or safe_name in {".", ".."}:
+        raise ValidationError("Invalid filename.")
+
+    suffix = Path(safe_name).suffix.lower()
+    if suffix not in allowed_extensions:
+        log.warning(
+            "security.upload_extension_rejected",
+            extension=suffix,
+            allowed=sorted(allowed_extensions),
+        )
+        raise ExtensionNotAllowedError(
+            f"File extension '{suffix}' is not allowed. "
+            f"Permitted: {sorted(allowed_extensions)}"
+        )
+
+    return safe_name
+
+
 # ── Query Sanitisation ────────────────────────────────────────────────────────
 
 
@@ -202,6 +271,7 @@ def sanitize_query(query: str, *, max_length: int = 500) -> str:
 
 __all__ = [
     "validate_file_path",
+    "validate_upload_bytes",
     "sanitize_query",
     "ValidationError",
     "PathTraversalError",

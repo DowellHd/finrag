@@ -34,6 +34,7 @@ starlette==0.46.2               # Pinned to last version compatible with fastapi
 uvicorn[standard]==0.34.3       # ASGI server for FastAPI
 slowapi==0.1.9                  # Rate limiting middleware for FastAPI
 limits==3.12.0                  # Storage backends for slowapi
+python-multipart==0.0.20        # Required for multipart/form-data file uploads (/upload endpoint)
 
 # ── Testing ────────────────────────────────────────────────────────────────────
 pytest==8.3.4                   # Test runner

@@ -22,6 +22,7 @@ from security.validators import (
     ValidationError,
     sanitize_query,
     validate_file_path,
+    validate_upload_bytes,
 )
 
 # ── Fixtures ──────────────────────────────────────────────────────────────────
@@ -120,6 +121,59 @@ class TestFileNotFound:
     def test_nonexistent_file_rejected(self, tmp_path):
         with pytest.raises(ValidationError):
             validate_file_path(str(tmp_path / "ghost.txt"), max_size_bytes=1_000_000)
+
+
+# ── Ephemeral upload bytes validation tests ───────────────────────────────────
+
+
+class TestUploadBytesValidation:
+    def test_empty_bytes_rejected(self):
+        with pytest.raises(ValidationError):
+            validate_upload_bytes("doc.txt", b"", max_size_bytes=1_000_000)
+
+    def test_oversized_bytes_rejected(self):
+        with pytest.raises(FileTooLargeError):
+            validate_upload_bytes("doc.txt", b"x" * 1001, max_size_bytes=1000)
+
+    def test_exact_limit_boundary(self):
+        validate_upload_bytes("doc.txt", b"x" * 1000, max_size_bytes=1000)
+        with pytest.raises(FileTooLargeError):
+            validate_upload_bytes("doc.txt", b"x" * 1001, max_size_bytes=1000)
+
+    @pytest.mark.parametrize("ext", [".exe", ".py", ".sh", ".js", ".csv", ".xlsx"])
+    def test_disallowed_extensions_rejected(self, ext):
+        with pytest.raises(ExtensionNotAllowedError):
+            validate_upload_bytes(f"malicious{ext}", b"content", max_size_bytes=1_000_000)
+
+    def test_valid_pdf_extension_passes(self):
+        safe_name = validate_upload_bytes(
+            "tax_form.pdf", b"%PDF-1.4 dummy", max_size_bytes=1_000_000
+        )
+        assert safe_name == "tax_form.pdf"
+
+    def test_valid_txt_extension_passes(self):
+        safe_name = validate_upload_bytes(
+            "billing_statement.txt", b"content", max_size_bytes=1_000_000
+        )
+        assert safe_name == "billing_statement.txt"
+
+    def test_path_separators_stripped_to_basename(self):
+        safe_name = validate_upload_bytes(
+            "../../etc/passwd.txt", b"content", max_size_bytes=1_000_000
+        )
+        assert safe_name == "passwd.txt"
+        assert "/" not in safe_name
+
+    def test_windows_path_separators_stripped_to_basename(self):
+        safe_name = validate_upload_bytes(
+            "C:\\Users\\evil\\secret.txt", b"content", max_size_bytes=1_000_000
+        )
+        assert "\\" not in safe_name
+
+    def test_empty_filename_falls_back_to_default(self):
+        with pytest.raises(ExtensionNotAllowedError):
+            # "upload" has no extension, so this should hit the extension check
+            validate_upload_bytes("", b"content", max_size_bytes=1_000_000)
 
 
 # ── Query sanitisation tests ──────────────────────────────────────────────────

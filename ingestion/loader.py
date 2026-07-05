@@ -166,6 +166,7 @@ def load_document(
     *,
     ticker: str | None = None,
     doc_type: str | None = None,
+    override_filename: str | None = None,
 ) -> list[PageDoc]:
     """Load a document from disk into a list of ``PageDoc`` objects.
 
@@ -176,6 +177,10 @@ def load_document(
         path: Resolved, validated ``pathlib.Path`` to the document.
         ticker: Ticker symbol override (e.g. "AAPL"). Falls back to filename parse.
         doc_type: Document type override (e.g. "10-K"). Falls back to filename parse.
+        override_filename: Use this as the recorded ``source_file`` instead of
+            ``path.name``. Needed when ``path`` is a temp file (e.g. an
+            ephemeral upload written to disk under a random name) so citations
+            show the user's real filename instead of a tempfile name.
 
     Returns:
         List of ``PageDoc`` objects, one per page (PDFs) or one for text files.
@@ -183,7 +188,7 @@ def load_document(
     Raises:
         ValueError: If the file cannot be parsed.
     """
-    filename = path.name
+    filename = override_filename or path.name
     meta = _parse_filename_metadata(filename)
 
     # Explicit arguments take precedence over filename-parsed values

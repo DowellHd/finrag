@@ -79,6 +79,32 @@ class Settings(BaseSettings):
         description="Hard upper limit on uploaded file sizes.",
     )
 
+    # ── Ephemeral Uploads (session-scoped, in-memory only) ───────────────────
+    ephemeral_max_file_size_bytes: int = Field(
+        default=5_242_880,  # 5 MB — smaller than the 50 MB permanent-ingest cap
+        ge=1,
+        le=52_428_800,
+        description="Max size for ephemeral (session-only) document uploads.",
+    )
+    ephemeral_session_ttl_seconds: int = Field(
+        default=1800,  # 30 minutes
+        ge=60,
+        le=7200,
+        description="How long an ephemeral upload session stays queryable before eviction.",
+    )
+    ephemeral_max_sessions: int = Field(
+        default=25,
+        ge=1,
+        le=500,
+        description="Hard cap on concurrent ephemeral sessions held in memory.",
+    )
+    ephemeral_max_chunks_per_doc: int = Field(
+        default=150,
+        ge=10,
+        le=1000,
+        description="Max chunks retained per ephemeral upload; excess is truncated.",
+    )
+
     # ── API ───────────────────────────────────────────────────────────────────
     api_host: str = Field(default="0.0.0.0")
     api_port: int = Field(default=8000, ge=1, le=65535)
@@ -92,6 +118,14 @@ class Settings(BaseSettings):
     rate_limit_query: int = Field(
         default=30,
         description="Max query requests per minute per IP.",
+    )
+    rate_limit_upload: int = Field(
+        default=5,
+        description="Max /upload requests per minute per IP.",
+    )
+    rate_limit_ephemeral_query: int = Field(
+        default=20,
+        description="Max /ephemeral-query requests per minute per IP.",
     )
 
     # ── Logging ───────────────────────────────────────────────────────────────
